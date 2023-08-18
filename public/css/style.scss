@@ -1,0 +1,415 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap');
+@import './config';
+
+@mixin mobile {
+    @media screen and (max-width: #{$mobile - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $mobile) and (max-width: #{$desktop - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop) {
+        @content;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    } 50% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+::selection {
+    background-color:$primary-txt;
+    color: black;
+}
+
+body {
+    background-color: $primary-bg;
+    color: $primary-txt;
+    scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $box-border;
+    border-radius: 20px;
+}
+
+#header {
+    padding: 10px 5%;
+    height: 100px;
+    margin-bottom: 50px;
+
+    .header__logo {
+        font-size: 36px;
+        font-weight: map-get($font-weights, 'medium');
+        text-transform: uppercase;
+        float: left;
+
+        span {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px $primary-txt;
+        }
+    }
+
+    .header__info {
+        float: right;
+
+        div {
+            float: left;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .about {
+            border: 2px solid $primary-txt;
+        }
+    }
+}
+
+#body {
+
+    .options-container, .text-container {
+        height: auto;
+        width: 30%;
+        margin: 0 auto;
+        margin-bottom: 50px;
+        padding: 10px 20px;
+        border: 2px solid $box-border;
+        background-color: $box-bg;
+        border-radius: 15px;
+        color: $primary-blur-txt;
+        position: relative;
+        overflow: hidden;
+        transition: all ease 0.5s;
+
+        @include tablet {
+            width: 50%;
+        }
+
+        &.expand {
+            height: auto;
+        }
+
+        .minimize {
+            position: absolute;
+            font-size: 22px;
+            right: 10px;
+            cursor: pointer;
+            transform: rotate(0deg);
+            transition: all ease 0.5s;
+
+            i::before {
+                pointer-events: none;
+                user-select: none;
+            }
+        }
+
+
+        h1 {
+            text-align: center;
+            margin-top: 10px;
+            transition: all ease 0.5s;
+        }
+
+        .line {
+            width: 20%;
+            display: block;
+            border-bottom: 1px solid $primary-blur-txt;
+            margin: 10px auto;
+            margin-bottom: 30px;
+            transition: all ease 0.5s;
+        }
+
+        .options {
+            overflow: hidden;
+
+            & > div {
+                .title {
+                    transition: all ease 0.5s;
+                }
+
+                &:hover .title {
+                    margin-left: 10px;
+
+                }
+            }
+
+
+            .title {
+                color: $primary-txt;
+                margin-right: 20px;
+                font-weight: map-get($font-weights, 'bold');
+            }
+
+            .modes, .times, .words-source, .words, .quotes, .wikis, .custom {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+                margin-bottom: 0;
+                transition: all ease 0.5s;
+
+                & > div {
+                    float: left;
+                }
+
+
+                &__selection {
+                    float: right !important;
+                }
+
+            }
+
+
+            .show {
+                height: auto;
+                opacity: 1;
+                margin-bottom: 10px;
+            }
+
+            .selection {
+                float: left;
+                margin: 0 10px;
+                cursor: pointer;
+                transition: all ease 0.5s;
+            }
+
+            .selection.active {
+                color: $primary-txt;
+                border-bottom: 1px dashed $primary-txt;
+            }
+
+            .custom {
+                opacity: 1;
+                height: auto;
+
+                &.hide {
+                    opacity: 0;
+                    height: 0;
+                }
+
+                input {
+                    border: none;
+                    // border: 1px solid $primary-blur-txt;
+                    background-color: rgb(34 34 34);
+                    color: $primary-blur-txt;
+                    border-radius: 6px;
+                    padding: 0 10px;
+                    width: 100px;
+                    height: 30px;
+                    margin-top: 5px;
+                    opacity: 1;
+                    transition: all ease 0.5s;
+
+                    &:focus-visible {
+                        outline: none;
+                    }
+                }
+            }
+
+        }
+    }
+
+    .options-container.close {
+        margin-bottom: 20px;
+        width: 50px;
+        height: 50px;
+        border-color: $option-hide;
+
+        & > .minimize {
+            top: 10px;
+            right: 15px;
+            transform: scale(1.4) rotate(45deg);
+        }
+
+        & > h1 {
+            color: $option-hide;
+            opacity: 0;
+        }
+
+        & > .line {
+            border-color: $option-hide;
+        }
+    }
+
+    .text-container {
+        opacity: 1;
+        width: 60%;
+        height: 165px;
+        margin-bottom: 0;
+        transition: all ease 0.5s;
+
+        @include tablet {
+            width: 85%;
+        }
+
+        &.hide {
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            opacity: 0;
+            border: none;
+        }
+
+        .text__display {
+            max-height: 140px;
+            overflow-y: hidden;
+            font-size: 24px;
+            color: $input-blur;
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            .cursor {
+                top: 20px;
+                width: 2px;
+                height: 25px;
+                background-color: $primary-txt;
+                position: absolute;
+                animation: blink 1s infinite;
+            }
+
+            .word {
+                display: inline-block;
+                margin: 5px;
+                animation: fadeIn 0.5s ease;
+
+
+                .correct {
+                    color: $primary-txt;
+                }
+
+                .incorrect {
+                    color: tomato;
+                    background-color: #ff634724;
+                    border-radius: 5px;
+                }
+                
+                letter {
+                    user-select: none;
+                    pointer-events: none;
+
+                }
+            }
+        }
+
+        .text__input {
+            display: none;
+        }
+    }
+
+    .measure-container {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        overflow: hidden;
+        width: 50%;
+        margin: 0 auto;
+        opacity: 1;
+        pointer-events: auto;
+        transition: all ease 0.5s;
+
+        &.finish span {
+            font-size: calc(16px * 1.5);
+
+            @include tablet {
+                font-size: calc(16px * 1.25);
+            }
+        }
+
+        &.finish b {
+            font-size: calc(46px * 1.5);
+
+            @include tablet {
+                font-size: calc(46px * 1.25);
+            }
+        }
+
+
+        &.hide {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .time-elapsed, .word-elapsed, .accuracy {
+
+            &.hide {
+                display: none;
+            }
+        }
+
+
+
+        & > div{
+            float: left;
+            margin: 0 20px;
+
+            span {
+                color: $primary-blur-txt;
+                display: block;
+                width: 100%;
+                font-size: 16px;
+            }
+
+            b {
+                font-size: 46px;
+            }
+        }
+    }
+
+    .restart-container {
+        width: 10%;
+        margin: 50px auto;
+
+        .restart {
+            display: flex;
+            justify-content: center;
+
+
+            i {
+                font-size: 22px;
+                cursor: pointer;
+                color: $primary-txt;
+                opacity: 0.5;
+                transform: rotate(0deg);
+                transition: all ease-in-out 0.5s;
+
+                &.rotate {
+                    transform: rotate(360deg);
+                }
+            }
+
+        }
+    }
+
+
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-rounded/css/uicons-regular-rounded.css'>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Key Runner</title>
+</head>
+<body>
+    <div id="header">
+        <div class="header__logo">
+            Key
+            <span>Runner</span>
+        </div>
+
+        <div class="header__info">
+            <div class="setting">Setting</div>
+            <div class="about">About</div>
+        </div>
+    </div>
+
+    <div id="body">
+        <div class="options-container">
+            <span class="minimize">
+                <i class="fi fi-rr-cross-small"></i>
+            </span>
+            <h1>Options</h1>
+            <span class="line"></span>
+            <div class="options">
+                <div class="modes show">
+                    <div class="modes__title title">> Modes: </div>
+                    <div class="modes__selection">
+                        <div class="selection time active">time</div>
+                        <div class="selection word">word</div>
+                        <div class="selection quote">quote</div>
+                        <div class="selection wiki">wiki</div>
+                    </div>
+                </div>
+
+                <div class="times show">
+                    <div class="times__title title">> Counter: </div>
+                    <div class="times__selection">
+                        <div class="selection random active">
+                            <i class="fi fi-rr-shuffle"></i>
+                        </div>
+                        <div class="selection">15</div>
+                        <div class="selection">30</div>
+                        <div class="selection">60</div>
+                        <div class="selection custom-number">
+                            <i class="fi fi-rr-settings-sliders"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="words-source">
+                    <div class="words-source__title title">> Source: </div>
+                    <div class="words-source__selection">
+                        <div class="selection from-dictionary active">Dictionary</div>
+                        <div class="selection from-google">Google</div>
+                    </div>
+                </div>
+
+                <div class="words">
+                    <div class="words__title title">> Word: </div>
+                    <div class="words__selection">
+                        <div class="selection random active">
+                            <i class="fi fi-rr-shuffle"></i>
+                        </div>
+                        <div class="selection">10</div>
+                        <div class="selection">20</div>
+                        <div class="selection">40</div>
+                        <div class="selection custom-number">
+                            <i class="fi fi-rr-settings-sliders"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quotes">
+                    <div class="quotes__title title">> Length: </div>
+                    <div class="quotes__selection">
+                        <div class="selection random active">
+                            <i class="fi fi-rr-shuffle"></i>
+                        </div>
+                        <div class="selection short">short</div>
+                        <div class="selection medium">medium</div>
+                        <div class="selection long">long</div>
+                    </div>
+                </div>
+
+                <div class="wikis">
+                    <div class="wikis__title title">> Sentence: </div>
+                    <div class="wikis__selection">
+                        <div class="selection random active">
+                            <i class="fi fi-rr-shuffle"></i>
+                        </div>
+                        <div class="selection">2</div>
+                        <div class="selection">4</div>
+                        <div class="selection">8</div>
+                        <div class="selection custom-number">
+                            <i class="fi fi-rr-settings-sliders"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="custom hide">
+                    <div class="custom__selection">
+                        <input type="number" placeholder="Number...">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-container">
+            <div class="text__display">
+
+            </div>
+            <div class="text__input">
+                <input type="text">
+            </div>
+        </div>
+
+        <div class="restart-container">
+            <div class="restart">
+                <i class="fi fi-rr-refresh"></i>
+            </div>
+        </div>
+
+        <div class="measure-container hide">
+            <div class="wpm">
+                <span class="wpm__title">WPM</span>
+                <b>0</b>
+            </div>
+
+            <div class="cpm">
+                <span class="wpm__title">CPM</span>
+                <b>0</b>
+            </div>
+
+            <div class="accuracy hide">
+                <span class="accuracy__title">Accuracy</span>
+                <b>100</b>
+            </div>
+
+            <div class="incorrect-char">
+                <span class="incorrect-char__title">Incorrect</span>
+                <b>0</b>
+            </div>
+
+            <div class="time-elapsed">
+                <span class="time-elapsed__title">Time</span>
+                <b>00:00</b>
+            </div>
+
+            <div class="word-elapsed hide">
+                <span class="word__title">Typed</span>
+                <b>0/10</b>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="text/javascript" src="scripts/main.js"></script>
+<script type="module" src="scripts/options.js"></script>
+<script type="module" src="scripts/runner.js"></script>
+
+</html>

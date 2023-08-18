@@ -1,0 +1,333 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MuseoModerno", cursive;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+::selection {
+  background-color: white;
+  color: black;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+  scroll-behavior: smooth;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(51, 51, 51);
+  border-radius: 20px;
+}
+
+#header {
+  padding: 10px 5%;
+  height: 100px;
+  margin-bottom: 50px;
+}
+#header .header__logo {
+  font-size: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  float: left;
+}
+#header .header__logo span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px white;
+}
+#header .header__info {
+  float: right;
+}
+#header .header__info div {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+#header .header__info .about {
+  border: 2px solid white;
+}
+
+#body .options-container, #body .text-container {
+  height: auto;
+  width: 30%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  border: 2px solid rgb(51, 51, 51);
+  background-color: #1c1c1c;
+  border-radius: 15px;
+  color: rgb(133, 133, 133);
+  position: relative;
+  overflow: hidden;
+  transition: all ease 0.5s;
+}
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+  #body .options-container, #body .text-container {
+    width: 50%;
+  }
+}
+#body .options-container.expand, #body .text-container.expand {
+  height: auto;
+}
+#body .options-container .minimize, #body .text-container .minimize {
+  position: absolute;
+  font-size: 22px;
+  right: 10px;
+  cursor: pointer;
+  transform: rotate(0deg);
+  transition: all ease 0.5s;
+}
+#body .options-container .minimize i::before, #body .text-container .minimize i::before {
+  pointer-events: none;
+  user-select: none;
+}
+#body .options-container h1, #body .text-container h1 {
+  text-align: center;
+  margin-top: 10px;
+  transition: all ease 0.5s;
+}
+#body .options-container .line, #body .text-container .line {
+  width: 20%;
+  display: block;
+  border-bottom: 1px solid rgb(133, 133, 133);
+  margin: 10px auto;
+  margin-bottom: 30px;
+  transition: all ease 0.5s;
+}
+#body .options-container .options, #body .text-container .options {
+  overflow: hidden;
+}
+#body .options-container .options > div .title, #body .text-container .options > div .title {
+  transition: all ease 0.5s;
+}
+#body .options-container .options > div:hover .title, #body .text-container .options > div:hover .title {
+  margin-left: 10px;
+}
+#body .options-container .options .title, #body .text-container .options .title {
+  color: white;
+  margin-right: 20px;
+  font-weight: 600;
+}
+#body .options-container .options .modes, #body .options-container .options .times, #body .options-container .options .words-source, #body .options-container .options .words, #body .options-container .options .quotes, #body .options-container .options .wikis, #body .options-container .options .custom, #body .text-container .options .modes, #body .text-container .options .times, #body .text-container .options .words-source, #body .text-container .options .words, #body .text-container .options .quotes, #body .text-container .options .wikis, #body .text-container .options .custom {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 0;
+  transition: all ease 0.5s;
+}
+#body .options-container .options .modes > div, #body .options-container .options .times > div, #body .options-container .options .words-source > div, #body .options-container .options .words > div, #body .options-container .options .quotes > div, #body .options-container .options .wikis > div, #body .options-container .options .custom > div, #body .text-container .options .modes > div, #body .text-container .options .times > div, #body .text-container .options .words-source > div, #body .text-container .options .words > div, #body .text-container .options .quotes > div, #body .text-container .options .wikis > div, #body .text-container .options .custom > div {
+  float: left;
+}
+#body .options-container .options .modes__selection, #body .options-container .options .times__selection, #body .options-container .options .words-source__selection, #body .options-container .options .words__selection, #body .options-container .options .quotes__selection, #body .options-container .options .wikis__selection, #body .options-container .options .custom__selection, #body .text-container .options .modes__selection, #body .text-container .options .times__selection, #body .text-container .options .words-source__selection, #body .text-container .options .words__selection, #body .text-container .options .quotes__selection, #body .text-container .options .wikis__selection, #body .text-container .options .custom__selection {
+  float: right !important;
+}
+#body .options-container .options .show, #body .text-container .options .show {
+  height: auto;
+  opacity: 1;
+  margin-bottom: 10px;
+}
+#body .options-container .options .selection, #body .text-container .options .selection {
+  float: left;
+  margin: 0 10px;
+  cursor: pointer;
+  transition: all ease 0.5s;
+}
+#body .options-container .options .selection.active, #body .text-container .options .selection.active {
+  color: white;
+  border-bottom: 1px dashed white;
+}
+#body .options-container .options .custom, #body .text-container .options .custom {
+  opacity: 1;
+  height: auto;
+}
+#body .options-container .options .custom.hide, #body .text-container .options .custom.hide {
+  opacity: 0;
+  height: 0;
+}
+#body .options-container .options .custom input, #body .text-container .options .custom input {
+  border: none;
+  background-color: rgb(34, 34, 34);
+  color: rgb(133, 133, 133);
+  border-radius: 6px;
+  padding: 0 10px;
+  width: 100px;
+  height: 30px;
+  margin-top: 5px;
+  opacity: 1;
+  transition: all ease 0.5s;
+}
+#body .options-container .options .custom input:focus-visible, #body .text-container .options .custom input:focus-visible {
+  outline: none;
+}
+#body .options-container.close {
+  margin-bottom: 20px;
+  width: 50px;
+  height: 50px;
+  border-color: rgba(133, 133, 133, 0.15);
+}
+#body .options-container.close > .minimize {
+  top: 10px;
+  right: 15px;
+  transform: scale(1.4) rotate(45deg);
+}
+#body .options-container.close > h1 {
+  color: rgba(133, 133, 133, 0.15);
+  opacity: 0;
+}
+#body .options-container.close > .line {
+  border-color: rgba(133, 133, 133, 0.15);
+}
+#body .text-container {
+  opacity: 1;
+  width: 60%;
+  height: 165px;
+  margin-bottom: 0;
+  transition: all ease 0.5s;
+}
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+  #body .text-container {
+    width: 85%;
+  }
+}
+#body .text-container.hide {
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  border: none;
+}
+#body .text-container .text__display {
+  max-height: 140px;
+  overflow-y: hidden;
+  font-size: 24px;
+  color: rgba(133, 133, 133, 0.3);
+}
+#body .text-container .text__display::-webkit-scrollbar {
+  display: none;
+}
+#body .text-container .text__display .cursor {
+  top: 20px;
+  width: 2px;
+  height: 25px;
+  background-color: white;
+  position: absolute;
+  animation: blink 1s infinite;
+}
+#body .text-container .text__display .word {
+  display: inline-block;
+  margin: 5px;
+  animation: fadeIn 0.5s ease;
+}
+#body .text-container .text__display .word .correct {
+  color: white;
+}
+#body .text-container .text__display .word .incorrect {
+  color: tomato;
+  background-color: rgba(255, 99, 71, 0.1411764706);
+  border-radius: 5px;
+}
+#body .text-container .text__display .word letter {
+  user-select: none;
+  pointer-events: none;
+}
+#body .text-container .text__input {
+  display: none;
+}
+#body .measure-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  overflow: hidden;
+  width: 50%;
+  margin: 0 auto;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all ease 0.5s;
+}
+#body .measure-container.finish span {
+  font-size: 24px;
+}
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+  #body .measure-container.finish span {
+    font-size: 20px;
+  }
+}
+#body .measure-container.finish b {
+  font-size: 69px;
+}
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+  #body .measure-container.finish b {
+    font-size: 57.5px;
+  }
+}
+#body .measure-container.hide {
+  opacity: 0;
+  pointer-events: none;
+}
+#body .measure-container .time-elapsed.hide, #body .measure-container .word-elapsed.hide, #body .measure-container .accuracy.hide {
+  display: none;
+}
+#body .measure-container > div {
+  float: left;
+  margin: 0 20px;
+}
+#body .measure-container > div span {
+  color: rgb(133, 133, 133);
+  display: block;
+  width: 100%;
+  font-size: 16px;
+}
+#body .measure-container > div b {
+  font-size: 46px;
+}
+#body .restart-container {
+  width: 10%;
+  margin: 50px auto;
+}
+#body .restart-container .restart {
+  display: flex;
+  justify-content: center;
+}
+#body .restart-container .restart i {
+  font-size: 22px;
+  cursor: pointer;
+  color: white;
+  opacity: 0.5;
+  transform: rotate(0deg);
+  transition: all ease-in-out 0.5s;
+}
+#body .restart-container .restart i.rotate {
+  transform: rotate(360deg);
+}
