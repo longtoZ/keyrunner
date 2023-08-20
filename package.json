@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --no-source-map --watch public/css/style.scss public/css/style.css",
+    "sass": "sass --no-source-map --watch public/scss/:public/css/",
     "nodemon": "nodemon app.js",
     "dev": "npm-run-all --parallel sass nodemon"
   },

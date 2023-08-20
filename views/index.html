@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" theme>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,14 @@
 </head>
 <body>
     <div id="header">
-        <div class="header__logo">
+        <a class="header__logo" href="../">
             Key
             <span>Runner</span>
-        </div>
+        </a>
 
         <div class="header__info">
-            <div class="setting">Setting</div>
-            <div class="about">About</div>
+            <a class="setting" href="../setting">Setting</a>
+            <a class="about">About</a>
         </div>
     </div>
 
@@ -162,7 +162,9 @@
 </body>
 
 <script type="text/javascript" src="scripts/main.js"></script>
+<script type="module" src="scripts/load_theme.js"></script>
 <script type="module" src="scripts/options.js"></script>
 <script type="module" src="scripts/runner.js"></script>
+
 
 </html>

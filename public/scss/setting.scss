@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap');
+@import './config';
+@import './general';
+@import './theme.scss';
+
+#body {
+    width: 60%;
+    height: 100vh;
+    margin: 0 auto;
+
+    @include tablet {
+        width: 80%;
+    }
+
+    .theme {
+        &__title {
+            font-size: 26px;
+            margin-left: 20px;
+        }
+
+        &__box {
+            margin-top: 10px;
+            background-color: #1c1c1c;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+
+            .description {
+                color: $primary-blur-txt;
+            }
+
+            .options-area {
+                display: flex;
+                justify-content: space-evenly;
+
+                .option {
+                    margin: 0 10px;
+                    color: $primary-blur-txt;
+                    cursor: pointer;
+                    transition: $ease-1;
+
+                    &.active {
+                        color: $primary-txt;
+                        border-bottom: 1px dashed $primary-txt;
+                    }
+                }
+            }
+        }
+    }
+}

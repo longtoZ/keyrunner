@@ -1,0 +1,309 @@
+@import url("https://fonts.googleapis.com/css2?family=MuseoModerno:wght@200;300;400;500;600&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "MuseoModerno", cursive;
+}
+
+#header {
+  padding: 10px 5%;
+  height: 100px;
+  margin-bottom: 50px;
+}
+#header .header__logo {
+  font-size: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+#header .header__logo span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px white;
+}
+#header .header__info {
+  float: right;
+}
+#header .header__info a {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+#header .header__info .about {
+  border: 2px solid white;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+::selection {
+  background-color: white;
+  color: black;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(51, 51, 51);
+  border-radius: 20px;
+}
+
+#header {
+  padding: 10px 5%;
+  height: 100px;
+  margin-bottom: 50px;
+}
+#header .header__logo {
+  font-size: 36px;
+  font-weight: 500;
+  text-transform: uppercase;
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+#header .header__logo span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px white;
+}
+#header .header__info {
+  float: right;
+}
+#header .header__info a {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  cursor: pointer;
+  text-decoration: none;
+  color: white;
+}
+#header .header__info .about {
+  border: 2px solid white;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+::selection {
+  background-color: white;
+  color: black;
+}
+
+body {
+  background-color: #121212;
+  color: white;
+  overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+  width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgb(51, 51, 51);
+  border-radius: 20px;
+}
+
+html[theme=default] body {
+  animation: fadeIn 1s ease-in;
+}
+html[theme=default] #body .options-container, html[theme=default] #body .text-container, html[theme=default] #body .theme__box {
+  backdrop-filter: none;
+  border-color: rgb(51, 51, 51);
+  background-color: #1c1c1c;
+}
+
+html[theme=glassmorphism] #gradient-area {
+  width: 100%;
+  height: 100vh;
+  background-repeat: repeat-y;
+  background-size: cover;
+  filter: blur(20px);
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: gradientScale 30s ease-in-out infinite, fadeIn 1s ease-in;
+}
+@keyframes gradientScale {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  50% {
+    transform: scale3d(1.5, 1.5, 1.5);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .text-container, html[theme=glassmorphism] #body .theme__box {
+  backdrop-filter: blur(20px);
+  border: none;
+  background-color: rgba(28, 28, 28, 0.6);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.41);
+}
+html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .theme__box {
+  color: #bdbdbd;
+}
+html[theme=glassmorphism] #body .text-container {
+  color: rgba(189, 189, 189, 0.3843137255);
+}
+html[theme=glassmorphism] #body .measure-container > div {
+  background-color: rgba(28, 28, 28, 0.6);
+  border-radius: 15px;
+  padding: 15px 30px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.41);
+}
+
+html[theme=neumorphism] body {
+  background: linear-gradient(to bottom right, #4e4e4e 0%, #1a1a1a 100%) 100%;
+  background-attachment: fixed;
+  background-size: 200%;
+  animation: gradientFill 20s ease-in-out infinite, fadeIn 1s ease-in;
+}
+html[theme=neumorphism] #body .options-container, html[theme=neumorphism] #body .text-container, html[theme=neumorphism] #body .theme__box {
+  background-color: #2e2e2e;
+  border: none;
+  box-shadow: -3px -3px 8px rgba(185, 185, 185, 0.1), 6px 6px 11px rgba(22, 27, 29, 0.43);
+}
+html[theme=neumorphism] #body .text-container {
+  border: 4px solid rgb(52, 52, 52);
+  box-shadow: -3px -3px 8px rgba(185, 185, 185, 0.1) inset, 6px 6px 11px rgba(22, 27, 29, 0.43) inset;
+}
+html[theme=neumorphism] #body .measure-container > div {
+  background-color: #2e2e2e;
+  box-shadow: -3px -3px 8px rgba(185, 185, 185, 0.1), 6px 6px 11px rgba(22, 27, 29, 0.43);
+  border-radius: 15px;
+  padding: 15px 30px;
+  margin: 20px 0;
+  transition: all ease-in-out 0.3s;
+}
+html[theme=neumorphism] #body .measure-container > div:hover {
+  transform: scale(1.1);
+}
+@keyframes gradientFill {
+  0% {
+    background-position: left top;
+  }
+  50% {
+    background-position: right bottom;
+  }
+  100% {
+    background-position: left top;
+  }
+}
+html[theme=neumorphism] #shapes-area {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+html[theme=neumorphism] #shapes-area .shape {
+  position: absolute;
+  background-color: rgba(122, 122, 122, 0.2);
+  border-radius: 20%;
+  animation: floateShape 25s linear infinite;
+}
+@keyframes floateShape {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-200vh) rotate(720deg);
+  }
+}
+
+#body {
+  width: 60%;
+  height: 100vh;
+  margin: 0 auto;
+}
+@media screen and (min-width: 480px) and (max-width: 1023px) {
+  #body {
+    width: 80%;
+  }
+}
+#body .theme__title {
+  font-size: 26px;
+  margin-left: 20px;
+}
+#body .theme__box {
+  margin-top: 10px;
+  background-color: #1c1c1c;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+#body .theme__box .description {
+  color: rgb(133, 133, 133);
+}
+#body .theme__box .options-area {
+  display: flex;
+  justify-content: space-evenly;
+}
+#body .theme__box .options-area .option {
+  margin: 0 10px;
+  color: rgb(133, 133, 133);
+  cursor: pointer;
+  transition: all ease-in-out 0.5s;
+}
+#body .theme__box .options-area .option.active {
+  color: white;
+  border-bottom: 1px dashed white;
+}

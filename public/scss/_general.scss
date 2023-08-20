@@ -1,0 +1,97 @@
+#header {
+    padding: 10px 5%;
+    height: 100px;
+    margin-bottom: 50px;
+
+    .header__logo {
+        font-size: 36px;
+        font-weight: map-get($font-weights, 'medium');
+        text-transform: uppercase;
+        float: left;
+        color: $primary-txt;
+        text-decoration: none;
+
+        span {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 1px $primary-txt;
+        }
+    }
+
+    .header__info {
+        float: right;
+
+        a {
+            float: left;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            text-decoration: none;
+            color: $primary-txt;
+        }
+
+        .about {
+            border: 2px solid $primary-txt;
+        }
+    }
+}
+
+@mixin mobile {
+    @media screen and (max-width: #{$mobile - 1px}) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $mobile) and (max-width: #{$desktop - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media screen and (min-width: $desktop) {
+        @content;
+    }
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    } 50% {
+        opacity: 1;
+    } 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    } 100% {
+        opacity: 1;
+    }
+}
+
+::selection {
+    background-color:$primary-txt;
+    color: black;
+}
+
+body {
+    background-color: $primary-bg;
+    color: $primary-txt;
+    overflow: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+    background-color: $box-border;
+    border-radius: 20px;
+}
