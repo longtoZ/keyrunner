@@ -297,25 +297,30 @@
     .restart-container {
         width: 10%;
         margin: 50px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
 
-        .restart {
-            display: flex;
-            justify-content: center;
+        & > div {
+            cursor: pointer;
+            color: $primary-txt;
+            opacity: 0.5;
+        }
 
+        .restart i {
+            font-size: 22px;
+            transform: rotate(0deg);
+            transition: all ease-in-out 0.5s;
 
-            i {
-                font-size: 22px;
-                cursor: pointer;
-                color: $primary-txt;
-                opacity: 0.5;
-                transform: rotate(0deg);
-                transition: all ease-in-out 0.5s;
-
-                &.rotate {
-                    transform: rotate(360deg);
+            &.rotate {
+                transform: rotate(360deg);
                 }
-            }
+            
+        }
 
+        .next {
+            font-size: 30px;
         }
     }
 

@@ -60,7 +60,17 @@
                     <div class="option default active">Default</div>
                     <div class="option glassmorphism">Glassmorphism</div>
                     <div class="option neumorphism">Neumorphism</div>
+                    <div class="option background">Background</div>
                 </div>
+            </div>
+
+            <div class="background-upload-container hide">
+                <img class="upload-img-preview">
+                <label for="upload-img">
+                    <i class="fi fi-rr-upload"></i>
+                    Upload image
+                </label>
+                <input type="file" id="upload-img" accept="image/*" onchange="showPreview(event)">
             </div>
 
         </div>
@@ -95,10 +105,46 @@
                 </div>
             </div>
         </div>
+
+        <h2>Danger zone</h2>
+        <div class="danger-zone-container setting-box">
+            <div class="reset-setting-container">
+                <div class="title">Return all setting to original state.</div>
+                <button class="reset-setting">Reset</button>
+            </div>
+
+            <div class="reset-achievement-container">
+                <div class="title">Remove all achievement.</div>
+                <button class="reset-setting">Remove</button>
+            </div>
+        </div>
         
     </div>
     
 </body>
+<script type="text/javascript">
+    function showPreview(event) {
+        if(event.target.files.length > 0){
+            var src = URL.createObjectURL(event.target.files[0]);
+            var preview = document.querySelector(".upload-img-preview");
+            var body = document.querySelector('body')
+
+            preview.src = src
+            preview.style.display = "block"
+            body.style.backgroundImage = `url(${src})`
+            body.classList.add('background-show')
+
+            const image_reader = new FileReader();
+
+            image_reader.addEventListener('load', function() {
+                console.log(image_reader.result)
+                localStorage.setItem('uploaded-img', image_reader.result)
+            })
+
+            image_reader.readAsDataURL(event.target.files[0])
+        }
+    }
+</script>
 
 <script type="module" src="scripts/setting.js"></script>
 <script type="module" src="scripts/load_theme.js"></script>

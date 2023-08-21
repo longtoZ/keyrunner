@@ -1,6 +1,33 @@
 import { translateQuoteLength, randint, formatSecond, updateMetric, resetMetric } from "./format.js"
 import { getRandomPage, getPageIntro } from './wikipedia.js'
 
+function createText(words_display) {
+    // Assign words to element
+    for (const j of words_display) {
+        const word = document.createElement('div')
+        word.setAttribute('class', 'word')
+
+        for (const k of j.split('')) {
+            const letter = document.createElement('letter')
+            letter.textContent = k.trim()
+            word.appendChild(letter)
+        }
+
+        text_display.appendChild(word)
+    }
+
+    // Set active for first word
+    document.querySelector('.text__display .word').classList.add('word-active')
+}
+
+function addCursor() {
+    // Add cursor
+    const cursor = document.createElement('div')
+    cursor.setAttribute('class', 'cursor')
+    text_display.appendChild(cursor)
+
+}
+
 time_option.forEach(i => {
     i.addEventListener('click', function() {
         resetMetric()
@@ -21,10 +48,7 @@ time_option.forEach(i => {
             // Set total time
             document.querySelector('.time-elapsed b').textContent = formatSecond(number_of_times)
 
-            // Add cursor
-            const cursor = document.createElement('div')
-            cursor.setAttribute('class', 'cursor')
-            text_display.appendChild(cursor)
+            addCursor()
 
             // Choose words from data array
             fetch('../data/words.json').then((res) => res.json()).then((json) => {
@@ -35,22 +59,7 @@ time_option.forEach(i => {
                 }
 
             }).then(() => {
-                // Assign words to element
-                for (const j of words_display) {
-                    const word = document.createElement('div')
-                    word.setAttribute('class', 'word')
-
-                    for (const k of j.split('')) {
-                        const letter = document.createElement('letter')
-                        letter.textContent = k.trim().toLowerCase()
-                        word.appendChild(letter)
-                    }
-
-                    text_display.appendChild(word)
-                }
-
-                // Set active for first word
-                document.querySelector('.text__display .word').classList.add('word-active')
+               createText(words_display)
             })
 
             
@@ -86,56 +95,42 @@ word_option.forEach(i => {
         }
 
         if (number_of_words != 0) {
+
+            if (is_restart) {
+                addCursor()
+                createText(prev_text.trim().split(' '))
+            } else {
+                // Set total words
+                document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
+
+                addCursor()
+
+                // Choose words from data array
+                fetch('../data/words.json').then((res) => res.json()).then((json) => {
+                    if (source_type == 'dictionary') {
+                        const dict_lst = json.dictionary
+                        const dict_length = json.dictionary.length
+                        for (let j=0; j<number_of_words; j++) {
+                            words_display.push(dict_lst[randint(0, dict_length+1+1)])
+                        }
+                    } else if (source_type == 'google') {
+                        const google_lst = json.google
+                        for (let j=0; j<number_of_words; j++) {
+                            let length_choice = randint(0, 3) // return 0 or 1 or 2
             
-            // Set total words
-            document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
-
-            // Add cursor
-            const cursor = document.createElement('div')
-            cursor.setAttribute('class', 'cursor')
-            text_display.appendChild(cursor)
-
-            // Choose words from data array
-            fetch('../data/words.json').then((res) => res.json()).then((json) => {
-                if (source_type == 'dictionary') {
-                    const dict_lst = json.dictionary
-                    const dict_length = json.dictionary.length
-                    for (let j=0; j<number_of_words; j++) {
-                        words_display.push(dict_lst[randint(0, dict_length+1+1)])
-                    }
-                } else if (source_type == 'google') {
-                    const google_lst = json.google
-                    for (let j=0; j<number_of_words; j++) {
-                        let length_choice = randint(0, 3) // return 0 or 1 or 2
-        
-                        if (length_choice == 0) {
-                            words_display.push(google_lst.short[randint(0, google_lst.short.length+1)])
-                        } else if (length_choice == 1) {
-                            words_display.push(google_lst.medium[randint(0, google_lst.medium.length+1)])
-                        } else {
-                            words_display.push(google_lst.long[randint(0, google_lst.long.length+1)])
+                            if (length_choice == 0) {
+                                words_display.push(google_lst.short[randint(0, google_lst.short.length+1)])
+                            } else if (length_choice == 1) {
+                                words_display.push(google_lst.medium[randint(0, google_lst.medium.length+1)])
+                            } else {
+                                words_display.push(google_lst.long[randint(0, google_lst.long.length+1)])
+                            }
                         }
                     }
-                }
-            }).then(() => {
-                for (const j of words_display) {
-                    const word = document.createElement('div')
-                    word.setAttribute('class', 'word')
-    
-                    for (const k of j.split('')) {
-                        const letter = document.createElement('letter')
-                        letter.textContent = k.trim().toLowerCase()
-                        word.appendChild(letter)
-                    }
-    
-                    text_display.appendChild(word)
-                }
-    
-                // Set active for first word
-                document.querySelector('.text__display .word').classList.add('word-active')
-            })
-
-            
+                }).then(() => {
+                    createText(words_display)
+                })
+            }            
         }
     })
 })
@@ -152,6 +147,7 @@ custom_input.addEventListener('keypress', function(key) {
 quote_option.forEach(i => {
     i.addEventListener('click', function() {
         resetMetric()
+        console.log(is_restart, prev_text)
         text_display.innerHTML = ''
 
         // Generate random number of words
@@ -161,51 +157,36 @@ quote_option.forEach(i => {
             quote_length = this.textContent
         }
 
-        // Get random quote from json file
-        fetch('../data/quotes.json').then((res) => res.json()).then((json) => {
-            while (true) {
-                const random_quote = json[randint(0, json.length+1)]
-                const random_quote_content = random_quote['text']
-                const random_quote_author = random_quote['author']
-                const translated_length = translateQuoteLength(quote_length)
+        if (is_restart) {
+            addCursor()
+            createText(prev_text.trim().split(' '))
+        } else {
+            // Get random quote from json file
+            fetch('../data/quotes.json').then((res) => res.json()).then((json) => {
+                while (true) {
+                    const random_quote = json[randint(0, json.length+1)]
+                    const random_quote_content = random_quote['text']
+                    const random_quote_author = random_quote['author']
+                    const translated_length = translateQuoteLength(quote_length)
 
-                if (random_quote_content.length >= translated_length[0] && random_quote_content.length <= translated_length[1]) {
-                    
-                    words_display = `${random_quote_content} ${random_quote_author}`.split(' ')
+                    if (random_quote_content.length >= translated_length[0] && random_quote_content.length <= translated_length[1]) {
+                        
+                        words_display = `${random_quote_content} ${random_quote_author}`.split(' ')
 
-                    number_of_words = words_display.length
-                    
-                    // Set total words
-                    document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
+                        number_of_words = words_display.length
 
-                    // Add cursor
-                    const cursor = document.createElement('div')
-                    cursor.setAttribute('class', 'cursor')
-                    text_display.appendChild(cursor)
-                    break
+                        document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
+
+                        addCursor()
+                        break
+                    }
+
                 }
 
-            }
-
-        }).then(() => {
-            for (const j of words_display) {
-                const word = document.createElement('div')
-                word.setAttribute('class', 'word')
-
-                for (const k of j.split('')) {
-                    const letter = document.createElement('letter')
-                    letter.textContent = k.trim()
-                    word.appendChild(letter)
-                }
-
-                text_display.appendChild(word)
-            }
-
-            // Set active for first word
-            document.querySelector('.text__display .word').classList.add('word-active')
-        })
-
-
+            }).then(() => {
+                createText(words_display)
+            })
+        }
     })
 })
 
@@ -225,47 +206,34 @@ wiki_option.forEach(i => {
 
         if (number_of_sentences != 0) {
             
-            // Add cursor
-            const cursor = document.createElement('div')
-            cursor.setAttribute('class', 'cursor')
-            text_display.appendChild(cursor)
+            if (is_restart) {
+                addCursor()
+                createText(prev_text.trim().split(' '))
+            } else {
 
-            const getPageContent = async function() {
-                const pageid = await getRandomPage()
-                const page_intro = await getPageIntro(pageid, number_of_sentences)
+                addCursor()
+                const getPageContent = async function() {
+                    const pageid = await getRandomPage()
+                    const page_intro = await getPageIntro(pageid, number_of_sentences)
 
-                return page_intro
-            }
-
-            getPageContent().then(content => {
-                // Get content from random page
-                words_display = content.split(' ')
-
-                // Set total time
-                number_of_words = words_display.length
-                document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
-                
-                // Assign words to element
-                for (const j of words_display) {
-                    const word = document.createElement('div')
-                    word.setAttribute('class', 'word')
-
-                    for (const k of j.split('')) {
-                        const letter = document.createElement('letter')
-                        letter.textContent = k.trim().replace('–', '-')
-                        word.appendChild(letter)
-                    }
-
-                    text_display.appendChild(word)
+                    return page_intro
                 }
 
-                // Set active for first word
-                document.querySelector('.text__display .word').classList.add('word-active')
-        
-            }).catch(
-                console.error
-            )
+                getPageContent().then(content => {
 
+                    // Get content from random page
+                    words_display = content.split(' ')
+
+                    // Set total time
+                    number_of_words = words_display.length
+                    document.querySelector('.word-elapsed b').textContent = `0/${number_of_words}`
+                    
+                    createText(words_display)
+            
+                }).catch(
+                    console.error
+                )
+            }
 
         }
     })
@@ -277,7 +245,7 @@ document.addEventListener('keydown', function(key) {
     end_interval = false
 
     // Check if user is typing in custom number input box
-    if (document.activeElement !== custom_input && (!key.code.includes('Shift'))) {
+    if (document.activeElement !== custom_input && !special_keys.includes(key.code)) {
 
         // Automatically move cursor to input field
         text_input.focus()
@@ -431,7 +399,17 @@ document.addEventListener('keydown', function(key) {
         
                         // Check for the last letter (correct one)
                         if (word_active.nextElementSibling == null && letters[i].nextElementSibling == null) {
-                            console.log(metric)
+                            
+                            // Save to previous text content
+                            prev_text = ''
+                            document.querySelectorAll('.text__display .word').forEach(i => {
+                                prev_text += i.textContent + ' '
+                            })
+                            prev_text.trim()
+                            
+                            // Recognize last word typed
+                            metric.typed_words += 1
+
                             end_interval = true
                             break
                         }

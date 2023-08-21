@@ -7,6 +7,7 @@
     display: none;
 }
 
+
 #body {
     width: 60%;
     height: 80vh;
@@ -25,6 +26,7 @@
 
     .setting-box {
         background-color: #1c1c1c;
+        border: 2px solid $box-border;
         padding: 20px;
         border-radius: 15px;
         overflow: hidden;
@@ -67,6 +69,52 @@
         
     }
 
+    .interface-container {
+        .theme-container {
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+
+        .options-area {
+            flex-wrap: wrap;
+            justify-content: right;
+            width: 50%;
+
+            .option {
+                margin: 10px;
+            }
+        }
+
+        .background-upload-container {
+            &.hide {
+                display: none;
+            }
+
+            overflow: hidden;
+            border: 1px dashed $primary-blur-txt;
+            border-radius: 10px;
+
+            label {
+                display: block;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            input {
+                display: none;
+            }
+
+            img {
+                display: none;
+                width: 40%;
+                height: auto;
+                border-radius: 15px;
+                margin: 0 auto;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
     .achievement-container {
         display: flex;
         flex-wrap: wrap;
@@ -85,4 +133,28 @@
             }
         }
     }
+
+    .danger-zone-container {
+        & > div {
+            overflow: hidden;
+        }
+
+        .title {
+            display: inline-block;
+            width: auto;
+        }
+
+        button {
+            color: #9e4331;
+            border-radius: 15px;
+            background: none;
+            padding: 10px;
+            border: 2px solid #9e4331;
+            font-weight: map-get($font-weights , 'bold');
+            float: right;
+            width: 150px;
+            cursor: pointer;
+        }
+    }
 }
+

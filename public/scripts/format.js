@@ -37,8 +37,6 @@ export function resetMetric() {
 
     end_interval = true
 
-    console.log(end_interval, ' in reset')
-
     metric.wpm = 0
     metric.cpm = 0
     metric.typed_chars_raw = 0
@@ -62,8 +60,6 @@ export function resetMetric() {
     runner_type = 'word'
 
     words_display = []
-
-
 
 }
 
@@ -91,7 +87,6 @@ export function updateMetric(type) {
         }
 
         if (end_interval) {
-
 
             clearInterval(interval)
             end_interval = false

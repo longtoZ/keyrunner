@@ -21,6 +21,7 @@ const custom__selection = document.querySelector('.custom')
 const text_container = document.querySelector('.text-container')
 
 const restart_race = document.querySelector('.restart i')
+const next_race = document.querySelector('.next i')
 
 const measure = document.querySelector('.measure-container')
 
@@ -43,7 +44,47 @@ const custom_input = document.querySelector('.custom__selection input')
 
 const word_elapsed_b = document.querySelector('.word-elapsed b')
 
+const special_keys = [
+    'Tab',
+    'Enter',
+    'ShiftLeft',
+    'ShiftRight',
+    'ControlLeft',
+    'ControlRight',
+    'AltLeft',
+    'AlftRight',
+    'Pause',
+    'Capslock',
+    'Escape',
+    'PageUp',
+    'PageDown',
+    'End',
+    'Home',
+    'ArrowLeft',
+    'ArrowRight',
+    'ArrowDown',
+    'ArrowUp',
+    'PrintScreen',
+    'Insert',
+    'Delete',
+    'F1',
+    'F2',
+    'F3',
+    'F4',
+    'F5',
+    'F6',
+    'F7',
+    'F8',
+    'F9',
+    'F10',
+    'F11',
+    'F12'
+]
+
 let runner_type = ''
+
+let prev_text = ''
+let is_restart = false
 
 let data = {}
 let metric = {

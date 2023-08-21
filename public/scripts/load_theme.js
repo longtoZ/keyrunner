@@ -30,7 +30,7 @@ function loadTheme() {
             shape.setAttribute('class', `shape`)
 
             const shape_size = randint(20, 100)
-            shape.style.top= '50%'
+            shape.style.top= '60%'
             shape.style.left = `${randint(0, 100)}%`
             shape.style.width = `${shape_size}px`
             shape.style.height = `${shape_size}px`
@@ -43,13 +43,26 @@ function loadTheme() {
 
         body.appendChild(shapes_area)
 
+    } else if (data_theme == 'background') {
+        if (document.querySelector('.background-upload-container')) {
+            document.querySelector('.background-upload-container').classList.remove('hide')
+        }
+
+        const uploaded_img = localStorage.getItem('uploaded-img')
+
+        if (uploaded_img) {
+            const body = document.querySelector('body')
+            const preview = document.querySelector(".upload-img-preview");
+
+            if(preview) {
+                preview.src = uploaded_img
+                preview.style.display = "block"
+            }
+
+            body.style.backgroundImage = `url(${uploaded_img})`
+            body.classList.add('background-show')
+        }
     }
 }
 
 window.addEventListener('load', loadTheme)
-
-if (document.querySelector('.theme__box .option')) {
-    document.querySelectorAll('.theme__box .option').forEach(i => {
-        i.addEventListener('click', loadTheme)
-    })
-}

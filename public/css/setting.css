@@ -268,6 +268,34 @@ html[theme=neumorphism] #shapes-area .shape {
   }
 }
 
+.background-show {
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  z-index: -1;
+  animation: fadeIn 0.3s ease-in;
+}
+.background-show #body .options-container, .background-show #body .text-container, .background-show #body .setting-box {
+  backdrop-filter: blur(10px);
+  border: none;
+  background-color: rgba(28, 28, 28, 0.6);
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.41);
+}
+.background-show #body .options-container, .background-show #body .setting-box {
+  color: #bdbdbd;
+}
+.background-show #body .text-container {
+  color: rgba(189, 189, 189, 0.3843137255);
+}
+.background-show #body .measure-container > div {
+  background-color: rgba(28, 28, 28, 0.6);
+  border-radius: 15px;
+  padding: 15px 30px;
+  margin: 20px 0;
+  box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.41);
+}
+
 ::-webkit-scrollbar-thumb {
   display: none;
 }
@@ -290,6 +318,7 @@ html[theme=neumorphism] #shapes-area .shape {
 }
 #body .setting-box {
   background-color: #1c1c1c;
+  border: 2px solid rgb(51, 51, 51);
   padding: 20px;
   border-radius: 15px;
   overflow: hidden;
@@ -324,6 +353,42 @@ html[theme=neumorphism] #shapes-area .shape {
   color: white;
   border-bottom: 1px dashed white;
 }
+#body .interface-container .theme-container {
+  margin-bottom: 0;
+  overflow: hidden;
+}
+#body .interface-container .options-area {
+  flex-wrap: wrap;
+  justify-content: right;
+  width: 50%;
+}
+#body .interface-container .options-area .option {
+  margin: 10px;
+}
+#body .interface-container .background-upload-container {
+  overflow: hidden;
+  border: 1px dashed rgb(133, 133, 133);
+  border-radius: 10px;
+}
+#body .interface-container .background-upload-container.hide {
+  display: none;
+}
+#body .interface-container .background-upload-container label {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+#body .interface-container .background-upload-container input {
+  display: none;
+}
+#body .interface-container .background-upload-container img {
+  display: none;
+  width: 40%;
+  height: auto;
+  border-radius: 15px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
 #body .achievement-container {
   display: flex;
   flex-wrap: wrap;
@@ -338,4 +403,22 @@ html[theme=neumorphism] #shapes-area .shape {
 #body .achievement-container > div .description {
   color: white;
   font-size: 40px;
+}
+#body .danger-zone-container > div {
+  overflow: hidden;
+}
+#body .danger-zone-container .title {
+  display: inline-block;
+  width: auto;
+}
+#body .danger-zone-container button {
+  color: #9e4331;
+  border-radius: 15px;
+  background: none;
+  padding: 10px;
+  border: 2px solid #9e4331;
+  font-weight: 600;
+  float: right;
+  width: 150px;
+  cursor: pointer;
 }

@@ -1,11 +1,25 @@
 import { resetMetric } from './format.js'
 
 restart_race.addEventListener('click', function() {
+    const active_mode = document.querySelector('.modes__selection .active').textContent
+    const accepted_mode = ['word', 'quote', 'wiki']
+    
+    if (prev_text != '' && accepted_mode.includes(active_mode)) {
+        resetMetric()
+        is_restart = true
+
+        document.querySelector('.modes__selection .active').click()
+        document.querySelector('.show > :not(.modes__selection):not(.words-source__selection) > .active').click()
+    }
+})
+
+next_race.addEventListener('click', function() {
     // End interval and reset all values to default
     resetMetric()
+    is_restart = false
     document.querySelector('.modes__selection .active').click()
     document.querySelector('.show > :not(.modes__selection):not(.words-source__selection) > .active').click()
-    restart_race.classList.toggle('rotate')
+    next_race.classList.toggle('rotate')
 })
 
 modes_selection.forEach(i => {
@@ -87,4 +101,4 @@ options_minimize.addEventListener('click', function() {
     options_container.classList.toggle('close')
 })
 
-window.addEventListener('load', () => restart_race.click())
+window.addEventListener('load', () => next_race.click())
