@@ -69,15 +69,15 @@ body {
   overflow: hidden;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: rgb(51, 51, 51);
   border-radius: 20px;
 }
@@ -145,15 +145,15 @@ body {
   overflow: hidden;
 }
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
 }
 
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
   background-color: transparent;
 }
 
-body::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background-color: rgb(51, 51, 51);
   border-radius: 20px;
 }
@@ -161,7 +161,7 @@ body::-webkit-scrollbar-thumb {
 html[theme=default] body {
   animation: fadeIn 1s ease-in;
 }
-html[theme=default] #body .options-container, html[theme=default] #body .text-container, html[theme=default] #body .theme__box {
+html[theme=default] #body .options-container, html[theme=default] #body .text-container, html[theme=default] #body .setting-box {
   backdrop-filter: none;
   border-color: rgb(51, 51, 51);
   background-color: #1c1c1c;
@@ -190,13 +190,13 @@ html[theme=glassmorphism] #gradient-area {
     transform: scale3d(1, 1, 1);
   }
 }
-html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .text-container, html[theme=glassmorphism] #body .theme__box {
+html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .text-container, html[theme=glassmorphism] #body .setting-box {
   backdrop-filter: blur(20px);
   border: none;
   background-color: rgba(28, 28, 28, 0.6);
   box-shadow: 0px 0px 16px 0px rgba(0, 0, 0, 0.41);
 }
-html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .theme__box {
+html[theme=glassmorphism] #body .options-container, html[theme=glassmorphism] #body .setting-box {
   color: #bdbdbd;
 }
 html[theme=glassmorphism] #body .text-container {
@@ -216,7 +216,7 @@ html[theme=neumorphism] body {
   background-size: 200%;
   animation: gradientFill 20s ease-in-out infinite, fadeIn 1s ease-in;
 }
-html[theme=neumorphism] #body .options-container, html[theme=neumorphism] #body .text-container, html[theme=neumorphism] #body .theme__box {
+html[theme=neumorphism] #body .options-container, html[theme=neumorphism] #body .text-container, html[theme=neumorphism] #body .setting-box {
   background-color: #2e2e2e;
   border: none;
   box-shadow: -3px -3px 8px rgba(185, 185, 185, 0.1), 6px 6px 11px rgba(22, 27, 29, 0.43);
@@ -268,42 +268,74 @@ html[theme=neumorphism] #shapes-area .shape {
   }
 }
 
+::-webkit-scrollbar-thumb {
+  display: none;
+}
+
 #body {
   width: 60%;
-  height: 100vh;
+  height: 80vh;
   margin: 0 auto;
+  padding: 0 10px;
+  overflow-y: scroll;
 }
 @media screen and (min-width: 480px) and (max-width: 1023px) {
   #body {
     width: 80%;
   }
 }
-#body .theme__title {
-  font-size: 26px;
-  margin-left: 20px;
+#body h2 {
+  padding-left: 40px;
+  font-size: 28px;
 }
-#body .theme__box {
-  margin-top: 10px;
+#body .setting-box {
   background-color: #1c1c1c;
   padding: 20px;
   border-radius: 15px;
-  display: flex;
-  justify-content: space-between;
+  overflow: hidden;
+  margin-bottom: 50px;
 }
-#body .theme__box .description {
+#body .setting-box > div {
+  padding: 10px 0;
+  margin-bottom: 20px;
+}
+#body .setting-box .title {
+  margin-left: 20px;
+  float: left;
+  width: 100%;
+}
+#body .setting-box .description {
+  margin-left: 20px;
   color: rgb(133, 133, 133);
+  display: inline-block;
 }
-#body .theme__box .options-area {
+#body .setting-box .options-area {
+  float: right;
   display: flex;
   justify-content: space-evenly;
 }
-#body .theme__box .options-area .option {
+#body .setting-box .options-area .option {
   margin: 0 10px;
   color: rgb(133, 133, 133);
   cursor: pointer;
   transition: all ease-in-out 0.5s;
 }
-#body .theme__box .options-area .option.active {
+#body .setting-box .options-area .option.active {
   color: white;
   border-bottom: 1px dashed white;
+}
+#body .achievement-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+#body .achievement-container > div {
+  flex: 33.3333333333%;
+  margin-bottom: 0;
+}
+#body .achievement-container > div .title {
+  color: rgb(133, 133, 133);
+}
+#body .achievement-container > div .description {
+  color: white;
+  font-size: 40px;
 }

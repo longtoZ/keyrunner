@@ -18,9 +18,43 @@
     </div>
 
     <div id="body">
-        <div class="theme">
-            <div class="theme__title">Theme</div>
-            <div class="theme__box">
+        <h2>Achievement</h2>
+        <div class="achievement-container setting-box">
+            <div class="total-time">
+                <div class="title">Time spent</div>
+                <div class="description">00:00:00</div>
+            </div>
+
+            <div class="total-words">
+                <div class="title">Words typed</div>
+                <div class="description">0</div>
+            </div>
+
+            <div class="total-race">
+                <div class="title">Race played</div>
+                <div class="description">0</div>
+            </div>
+
+            <div class="average-accuracy">
+                <div class="title">Average accuracy</div>
+                <div class="description">0</div>
+            </div>
+
+            <div class="average-speed">
+                <div class="title">Average speed (wpm)</div>
+                <div class="description">0</div>
+            </div>
+
+            <div class="highest-speed">
+                <div class="title">Highest speed (wpm)</div>
+                <div class="description">0</div>
+            </div>
+        </div>
+
+        <h2>Interface</h2>
+        <div class="interface-container setting-box">
+            <div class="theme-container">
+                <div class="title">> Theme</div>
                 <div class="description">Choose theme to apply.</div>
                 <div class="options-area">
                     <div class="option default active">Default</div>
@@ -28,12 +62,45 @@
                     <div class="option neumorphism">Neumorphism</div>
                 </div>
             </div>
+
         </div>
+
+        <h2>Control</h2>
+        <div class="control-container setting-box">
+            <div class="instant-death-container">
+                <div class="title">> Instant death</div>
+                <div class="description">End the race immediatly when player types wrong character.</div>
+                <div class="options-area">
+                    <div class="option off active">Off</div>
+                    <div class="option on">On</div>
+                </div>
+            </div>
+
+            <div class="ignore-mistake-container">
+                <div class="title">> Ignore mistake</div>
+                <div class="description">Let player type continuously without seeing any mistake.</div>
+                <div class="options-area">
+                    <div class="option off active">Off</div>
+                    <div class="option on">On</div>
+                </div>
+            </div>
+
+            <div class="cursor-type-container">
+                <div class="title">> Cursor type</div>
+                <div class="description">Change cursor to display while typing.</div>
+                <div class="options-area">
+                    <div class="option default active">Default</div>
+                    <div class="option block">Block</div>
+                    <div class="option underline">Underline</div>
+                </div>
+            </div>
+        </div>
+        
     </div>
     
 </body>
 
-<script type="text/javascript" src="scripts/setting.js"></script>
+<script type="module" src="scripts/setting.js"></script>
 <script type="module" src="scripts/load_theme.js"></script>
 
 </html>

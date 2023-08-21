@@ -1,3 +1,5 @@
+import { saveData } from "./handle_data.js"
+
 export function translateQuoteLength(type) {
     if (type == 'short') {
         return [0,50]
@@ -13,13 +15,21 @@ export function randint(min, max) {
 }
 
 export function formatSecond(s) {
-    let minute = Math.floor(s / 60) < 10 ? `0${Math.floor(s/60)}` : Math.floor(s/60).toString()
-    let second = Math.floor(s % 60) < 10 ? `0${Math.floor(s%60)}` : Math.floor(s%60).toString()
+    const minute = Math.floor(s / 60) < 10 ? `0${Math.floor(s/60)}` : Math.floor(s/60).toString()
+    const second = Math.floor(s % 60) < 10 ? `0${Math.floor(s%60)}` : Math.floor(s%60).toString()
 
     return `${minute}:${second}`
 }
 
-function average(lst) {
+export function formatTotalTime(s) {
+    const hour = Math.floor(s / 3600) < 10 ? `0${Math.floor(s/3600)}` : Math.floor(s/3600).toString()
+    const minute = Math.floor((s % 3600) / 60) < 10 ? `0${Math.floor((s%3600)/60)}` : Math.floor((s%3600)/60).toString()
+    const second = Math.floor((s % 3600) % 60) < 10 ? `0${Math.floor((s%3600)%60)}` : Math.floor((s%3600)%60).toString()
+
+    return `${hour}:${minute}:${second}`
+}
+
+export function average(lst) {
     return Math.round(lst.reduce((total, current) => total+current, 0) / lst.length)
 }
 
@@ -82,7 +92,6 @@ export function updateMetric(type) {
 
         if (end_interval) {
 
-            console.log('end interval', end_interval)
 
             clearInterval(interval)
             end_interval = false
@@ -107,6 +116,7 @@ export function updateMetric(type) {
             document.querySelector('.time-elapsed').classList.remove('hide')
             document.querySelector('.word-elapsed').classList.remove('hide')
 
+            saveData(metric.second, metric.typed_words, metric.accuracy, average(metric.speed_wpm))
 
             // Reset to default
             resetMetric()
@@ -119,7 +129,6 @@ export function updateMetric(type) {
             metric.wpm = Math.round(((metric.typed_chars-metric.incorrect) / 5) / (metric.second/60))
             metric.cpm = Math.round((metric.typed_chars-metric.incorrect) / (metric.second/60))
 
-            console.log(metric.typed_words, metric.incorrect)
             metric.speed_wpm.push(metric.wpm)
             metric.speed_cpm.push(metric.cpm)
     

@@ -431,6 +431,7 @@ document.addEventListener('keydown', function(key) {
         
                         // Check for the last letter (correct one)
                         if (word_active.nextElementSibling == null && letters[i].nextElementSibling == null) {
+                            console.log(metric)
                             end_interval = true
                             break
                         }

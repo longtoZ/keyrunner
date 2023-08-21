@@ -6,7 +6,7 @@ html[theme='default'] {
     }
 
     #body {
-        .options-container, .text-container, .theme__box {
+        .options-container, .text-container, .setting-box {
             backdrop-filter: none;
             border-color: $box-border;
             background-color: $box-bg;
@@ -41,14 +41,14 @@ html[theme='glassmorphism'] {
     }
 
     #body {
-        .options-container, .text-container, .theme__box {
+        .options-container, .text-container, .setting-box {
             backdrop-filter: blur(20px);
             border: none;
             background-color: rgba(28, 28, 28, 0.6);
             box-shadow: 0px 0px 16px 0px rgb(0 0 0 / 41%);
         }
 
-        .options-container, .theme__box {
+        .options-container, .setting-box {
             color: #bdbdbd;
         }
 
@@ -76,7 +76,7 @@ html[theme='neumorphism'] {
     }
 
     #body {
-        .options-container, .text-container, .theme__box {
+        .options-container, .text-container, .setting-box {
             background-color: #2e2e2e;
             border: none;
             box-shadow: $bs-out;
