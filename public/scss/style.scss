@@ -204,6 +204,7 @@
                 background-color: $primary-txt;
                 position: absolute;
                 animation: blink 1s infinite;
+                transition: all ease 0.2s;
             }
 
             .word {

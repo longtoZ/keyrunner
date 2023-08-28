@@ -377,6 +377,7 @@ html[theme=neumorphism] #shapes-area .shape {
   display: block;
   margin: 0 auto;
   text-align: center;
+  cursor: pointer;
 }
 #body .interface-container .background-upload-container input {
   display: none;
@@ -421,4 +422,53 @@ html[theme=neumorphism] #shapes-area .shape {
   float: right;
   width: 150px;
   cursor: pointer;
+}
+
+#modal-box {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.62);
+  z-index: 2;
+  animation: fadeIn 0.3s ease-in-out;
+}
+#modal-box .modal-container {
+  width: 30%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+  padding: 10px 20px;
+  background-color: #1c1c1c;
+  border-radius: 15px;
+}
+#modal-box .modal-container .title {
+  margin: 10px 0;
+  color: rgb(133, 133, 133);
+}
+#modal-box .modal-container .options {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 40px;
+}
+#modal-box .modal-container .options div {
+  padding: 10px;
+  border-radius: 15px;
+  width: 30%;
+  text-align: center;
+  cursor: pointer;
+}
+#modal-box .modal-container .options .yes {
+  background-color: #9e4331;
+}
+#modal-box .modal-container .options .no {
+  border: 2px solid #9e4331;
+  color: #9e4331;
+}
+
+#modal-box.open {
+  display: block;
 }

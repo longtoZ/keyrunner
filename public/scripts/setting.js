@@ -1,6 +1,9 @@
 import { loadData } from "./handle_data.js"
 
 const theme_options = document.querySelectorAll('.theme-container .option')
+const reset_setting = document.querySelector('.reset-setting-container .reset-setting')
+const reset_achievement = document.querySelector('.reset-achievement-container .reset-setting')
+const modal_box = document.querySelector('#modal-box')
 
 window.addEventListener('load', function() {
     const data_theme = localStorage.getItem('theme') == null ? 'default' : localStorage.getItem('theme') 
@@ -28,4 +31,29 @@ theme_options.forEach(i => {
 
         location.reload()
     })
+})
+
+reset_setting.addEventListener('click', function() {
+    
+})
+
+reset_achievement.addEventListener('click', function() {
+    modal_box.classList.add('open')
+
+    modal_box.querySelectorAll('.modal-container .options > div').forEach(i => {
+        i.addEventListener('click', function() {
+            if (this.classList.contains('yes')) {
+                if (localStorage.getItem('data')) {
+                    localStorage.removeItem('data')
+
+                    location.reload()
+                }
+            } else {
+                modal_box.classList.remove('open')
+                console.log('cancel')
+            }
+        })
+    })
+
+
 })

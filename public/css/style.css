@@ -462,6 +462,7 @@ html[theme=neumorphism] #shapes-area .shape {
   background-color: white;
   position: absolute;
   animation: blink 1s infinite;
+  transition: all ease 0.2s;
 }
 #body .text-container .text__display .word {
   display: inline-block;

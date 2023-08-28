@@ -16,7 +16,7 @@ function loadTheme() {
         const gradient_area = document.createElement('div')
 
         gradient_area.setAttribute('id', 'gradient-area')
-        gradient_area.style.backgroundImage = `url(../img/gradient${randint(0,6)}.jpg)`
+        gradient_area.style.backgroundImage = `url(../img/gradient${randint(0,11)}.jpg)`
 
         body.appendChild(gradient_area)
     } else if (data_theme == 'neumorphism') {

@@ -9,7 +9,6 @@
     <title>Setting</title>
 </head>
 <body>
-</div>
     <div id="header">
         <a class="header__logo" href="../">
             Key
@@ -120,32 +119,18 @@
         </div>
         
     </div>
-    
+
+    <div id="modal-box" onclick="close_box()">
+        <div class="modal-container">
+            <div class="title">Are you sure?</div>
+            <div class="options">
+                <div class="yes" onclick="close_box()">Yes</div>
+                <div class="no" onclick="close_box()">No</div>
+            </div>
+        </div>
+    </div>
 </body>
-<script type="text/javascript">
-    function showPreview(event) {
-        if(event.target.files.length > 0){
-            var src = URL.createObjectURL(event.target.files[0]);
-            var preview = document.querySelector(".upload-img-preview");
-            var body = document.querySelector('body')
-
-            preview.src = src
-            preview.style.display = "block"
-            body.style.backgroundImage = `url(${src})`
-            body.classList.add('background-show')
-
-            const image_reader = new FileReader();
-
-            image_reader.addEventListener('load', function() {
-                console.log(image_reader.result)
-                localStorage.setItem('uploaded-img', image_reader.result)
-            })
-
-            image_reader.readAsDataURL(event.target.files[0])
-        }
-    }
-</script>
-
+<script type="text/javascript" src="scripts/main_setting.js"></script>
 <script type="module" src="scripts/setting.js"></script>
 <script type="module" src="scripts/load_theme.js"></script>
 
